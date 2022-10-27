@@ -1,33 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios';
-import { useEffect } from 'react';
+import {Routes, Route, Navigate} from 'react-router-dom'
+import { useContext } from 'react';
 
+import './App.css';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Header from './components/Header';
+
+
+
+import AuthContext from './store/authContext';
 
 function App() {
- const apiKey = '93b6b6f3c7c8d824afc9cb6d0b32454c'
- const config = {
-  headers: {
-    URL_PARAM: apiKey
-  }
- }
-  useEffect(() => {
-   
-    axios.get(`https://api.getsongbpm.com/song/?api_key=${apiKey}&id=983pB`, config)
-    .then(function (response) {
-      console.log(response.data);
-    }
-
-    )
-    .catch(function (error) {
-      console.log(error)
-    })
-  }, [])
-  return (
+  const authCtx = useContext(AuthContext)
+  
+return (
+  <div>
+    <Header/>
+      <Routes>
+        {/* <Route path='/' element={<Login/>}/> */}
+        <Route path='/' element={!authCtx.token ? <Login/> : <Navigate to='/home'/>}/>
+        <Route path='/home' element={authCtx.token ?<Home/> : <Navigate to='/login'/>}/>
+        <Route path='*' element={<Navigate to='/'/>}/>
+      </Routes>
     
-    <div className="App">
-    </div>
-  );
+  
+  </div>
+)
+  
 }
 
 export default App;

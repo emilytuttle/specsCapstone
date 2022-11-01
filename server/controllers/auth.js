@@ -27,7 +27,7 @@ module.exports = {
             } else {
                 const salt = bcrypt.genSaltSync(10)
                 const hash = bcrypt.hashSync(password, salt)
-                const newUser = await User.create({email: email, username: username, password: hash})
+                const newUser = await User.create({email, username, password: hash})
                 const token = createToken(newUser.dataValues.username, newUser.dataValues.id)
                 console.log('TOOOOOOKEN', token)
                 const exp = Date.now() + 1000 * 60 * 60 * 48
@@ -50,7 +50,7 @@ module.exports = {
             const {username, password} = req.body
             let foundUser = await User.findOne({where: {username}})
             if (foundUser) {
-                const isAuthenticated = bcrypt.compareSync(password, foundUser.hashed_pass)
+                const isAuthenticated = bcrypt.compareSync(password, foundUser.password)
 
                 if (isAuthenticated) {
                     const token = createToken(foundUser.dataValues.username, foundUser.dataValues.id)

@@ -3,7 +3,7 @@ const {DataTypes} = require('sequelize')
 const {sequelize} = require('../util/database')
 
 module.exports = {
-    Playlist : sequelize.define('playlist', {
+    Vehicle : sequelize.define('vehicle', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -11,6 +11,9 @@ module.exports = {
             primaryKey: true
         },
         name: DataTypes.STRING,
-        content: DataTypes.INTEGER
+        make: DataTypes.STRING,
+        model: DataTypes.STRING,
+        year: DataTypes.STRING,
+        license: DataTypes.STRING
     })
 }

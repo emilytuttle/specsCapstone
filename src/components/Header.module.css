@@ -5,5 +5,28 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
+    display: flex;
+    
+
+}
+
+.listItem { 
+    text-decoration: none;
+    color: white;
+    font-family: serif;
+}
+
+ul {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 15px
 }

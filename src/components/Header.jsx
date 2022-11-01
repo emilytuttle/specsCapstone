@@ -17,16 +17,16 @@ const Header = () => {
       {
           authCtx.token && (
               <ul className='main-nav'>
-                  <li>
-                      <NavLink style={styleActiveLink} to='/'>Home</NavLink>
+                  <li classname={classes.listItem}>
+                      <NavLink style={styleActiveLink} to='/' classname={classes.listItem}>Home</NavLink>
                   </li>
-                  <li>
-                      <NavLink style={styleActiveLink} to='profile'>Profile</NavLink>
+                  <li classname={classes.listItem}>
+                      <NavLink style={styleActiveLink} to='profile' classname={classes.listItem}>Profile</NavLink>
                   </li>
-                  <li>
-                      <NavLink style={styleActiveLink} to='form'>Add Post</NavLink>
+                  <li classname={classes.listItem}>
+                      <NavLink style={styleActiveLink} to='form' classname={classes.listItem}>Add Post</NavLink>
                   </li>
-                  <li>
+                  <li classname={classes.listItem}>
                       <button className='logout-btn' onClick={() => authCtx.logout()}>Logout</button>
                   </li>
               </ul>

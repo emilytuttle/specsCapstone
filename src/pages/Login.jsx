@@ -8,15 +8,13 @@ const Auth = () => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
-    const [display, setDisplay] = useState('none')
+
 
     const authCtx = useContext(AuthContext)
 
     const submitHandler = e => {
         e.preventDefault()
 
-        setDisplay('none')
 
         const body = {
             email,
@@ -45,12 +43,12 @@ const Auth = () => {
         <main>
             <h1>Welcome!</h1>
             <form className='form auth-form' onSubmit={submitHandler}>
-                  <input 
+                  {register && (<input 
                       type='text' 
                       placeholder='email' 
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className='form-input'/>
+                      className='form-input'/>)}
                   <input 
                     type='text' 
                     placeholder='username' 
@@ -67,7 +65,6 @@ const Auth = () => {
                     {register ? 'Sign Up' : 'Login'}
                 </button>
             </form>
-            <p style={{display: display}} className='auth-msg'>{message}</p>
             <button className='form-btn' onClick={() => setRegister(!register)}>
                 Need to {register ? 'Login' : 'Sign Up'}?
             </button>

@@ -27,7 +27,7 @@ const DetailScreen = () => {
 
     const mappedVehicle = vehicle.map((vehicle, index) => {
         return (
-            <DetailContainer vehicle = {vehicle} />
+            <DetailContainer vehicle = {vehicle} key={index}/>
         )
     })
   return (

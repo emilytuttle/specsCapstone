@@ -11,7 +11,7 @@ module.exports = {
             primaryKey: true
         },
         service: DataTypes.STRING,
-        date: DataTypes.DATE,
+        date: DataTypes.STRING,
         odometer: DataTypes.STRING,
         notes: DataTypes.STRING
         

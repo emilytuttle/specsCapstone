@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 
 
-const NewMaintenance = () => {
+const NewMaintenance = ({id}) => {
     const [service, setService] = useState('')
     const [date, setDate] = useState('')
     const [odometer, setOdometer] = useState('')
@@ -15,18 +15,20 @@ const NewMaintenance = () => {
             service,
             date,
             odometer,
-            notes
+            notes, 
+            id
         }
 
-        axios.post(`http://localhost:3000/createMaintenance`, body)
+        const url = 'http://localhost:3000'
+                            
+        axios.post(`${url}/createMaintenace`, body)
         .then((res) => {
             console.log(res.data)
             setService('')
             setDate('')
             setOdometer('')
             setNotes('')
-        })
-        .catch(err => console.log(err))
+        }).catch(err => console.log(err))
     }
 
   return (

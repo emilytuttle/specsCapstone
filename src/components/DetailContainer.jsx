@@ -14,7 +14,7 @@ const DetailContainer = ({vehicle}) => {
         <h1>{vehicle.name}</h1>
         <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
         <h2>{vehicle.license}</h2>
-        <NewMaintenance />
+        <NewMaintenance id={vehicle.id}/>
     </div>
   )
 }

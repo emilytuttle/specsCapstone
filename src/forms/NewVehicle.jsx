@@ -4,7 +4,7 @@ import axios from 'axios'
 import AuthContext from '../store/authContext'
 
 
-const NewVehicle = () => {
+const NewVehicle = ({getVehicles}) => {
     const {userId} = useContext(AuthContext)
 
     const [name, setName] = useState('')
@@ -38,6 +38,8 @@ const NewVehicle = () => {
             setYear('')
             setLicense('')
             setOdometer('')
+
+            getVehicles()
         })
         .catch(err => {
             console.log(err)

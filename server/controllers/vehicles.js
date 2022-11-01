@@ -19,7 +19,18 @@ module.exports = {
             where: {userId: userId}
         })
         res.status(200).send(allVehicles)
-        console.log('check')
+        console.log('getting all user vehicles')
         
+    },
+
+    getDetails: async (req, res) => {
+        const {id} = req.params
+
+        let currentVehicle = await Vehicle.findAll({
+            
+            where: { id: id}
+        })
+        res.status(200).send(currentVehicle)
+        console.log('currentVehicle check, trying to pull up details page')
     }
 }

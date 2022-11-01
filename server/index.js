@@ -9,7 +9,7 @@ const {User} = require('./models/user')
 const {Vehicle} = require('./models/vehicle')
 const {Maintenance} = require('./models/maintenance')
 const {register, login} = require('./controllers/auth')
-const {createVehicle, getVehicles} = require('./controllers/vehicles')
+const {createVehicle, getVehicles, getDetails} = require('./controllers/vehicles')
 
 const app = express()
 
@@ -34,6 +34,7 @@ app.post('/login', login)
 
 app.post('/createVehicle', createVehicle)
 app.get('/uservehicles/:userId', getVehicles)
+app.get('/vehicle/:id', getDetails)
 
 sequelize.sync()
     

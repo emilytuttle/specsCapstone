@@ -4,8 +4,10 @@ import { useContext, useEffect, useState, useCallback } from 'react'
 import AuthContext from '../store/authContext'
 import axios from 'axios'
 import classes from '../styling/Home.module.css'
+import VehicleCard from '../components/VehicleCard'
 
 const Home = () => {
+ 
   const {userId} = useContext(AuthContext)
 
   const [allVehicles, setAllVehicles] = useState([])
@@ -18,21 +20,18 @@ const Home = () => {
 
   useEffect(() => {
     getVehicles()
-  }, [])
+  }, [getVehicles])
 
-  const mappedVehicles = allVehicles.map(vehicle => {
+  const mappedVehicles = allVehicles.map((vehicle, index) => {
     return (
-      <div key={vehicle.id} >
-        <h2>{vehicle.name}</h2>
-        <h4>{vehicle.make} {vehicle.model}</h4>
-        <h4>{vehicle.year}</h4>
-      </div>
+      <VehicleCard vehicle={vehicle}/>
     )
   })
 
+ 
   return (
-    <div>Home
-      <NewVehicle />
+    <div className={classes.home}>Home
+      <NewVehicle getVehicles={getVehicles} />
       {mappedVehicles}
     </div>
   )

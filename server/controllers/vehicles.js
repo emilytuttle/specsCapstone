@@ -32,5 +32,25 @@ module.exports = {
         })
         res.status(200).send(currentVehicle)
         console.log('currentVehicle check, trying to pull up details page')
+    },
+
+    putVehicle: async (req, res) => {
+        const {name, make, model, year, license, vehicleId} = req.body
+        try {
+            await Vehicle.update(
+                {
+                    name: `${name}`, 
+                    make: `${make}`, 
+                    model: `${model}`, 
+                    year: `${year}`, 
+                    license: `${license}`
+                },
+                {
+                    where: {id: vehicleId}
+                }
+            )
+        } catch(error) {
+            console.log(error `on putVehicle`)
+        }
     }
 }

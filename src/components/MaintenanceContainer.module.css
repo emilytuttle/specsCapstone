@@ -1,0 +1,9 @@
+.maintenanceContainer {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    line-height: 0;
+    margin: 15px;
+}

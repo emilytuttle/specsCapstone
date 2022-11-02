@@ -1,5 +1,6 @@
 import {useState, useContext} from 'react'
 import axios from 'axios'
+import classes from '../styling/Login.module.css'
 
 import AuthContext from '../store/authContext'
 
@@ -40,35 +41,41 @@ const Auth = () => {
     }
 
     return (
-        <main>
-            <h1>Welcome!</h1>
-            <form className='form auth-form' onSubmit={submitHandler}>
-                  {register && (<input 
-                      type='text' 
-                      placeholder='email' 
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
-                      className='form-input'/>)}
-                  <input 
-                    type='text' 
-                    placeholder='username' 
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
-                    className='form-input'/>
-                <input 
-                    type='password' 
-                    placeholder='password' 
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    className='form-input'/>
-                <button className='form-btn'>
-                    {register ? 'Sign Up' : 'Login'}
-                </button>
-            </form>
-            <button className='form-btn' onClick={() => setRegister(!register)}>
-                Need to {register ? 'Login' : 'Sign Up'}?
-            </button>
-        </main>
+        <div className={classes.login}>
+            <div className={classes.left}></div>
+            <div className={classes.right}>
+                <div className={classes.formContainer}>
+                    <h1 className={classes.welcome}>Welcome!</h1>
+                    <form className='form auth-form' onSubmit={submitHandler}>
+                        {register && (<input 
+                            type='text' 
+                            placeholder='Email' 
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            className='form-input'/>)}
+                        <input 
+                            type='text' 
+                            placeholder='Username' 
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                            className='form-input'/>
+                        <input 
+                            type='password' 
+                            placeholder='Password' 
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            className='form-input'/>
+                        <button className='form-btn'>
+                            {register ? 'Sign Up' : 'Login'}
+                        </button>
+                    </form>
+                    <p>{!register ? 'Need a new account?' : 'Already have an account?'}</p>
+                    <button className='form-btn' onClick={() => setRegister(!register)}>
+                        {register ? 'Sign in' : 'Sign Up'}
+                    </button>
+                </div>
+            </div>
+        </div>
     )
 }
 

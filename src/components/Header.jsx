@@ -9,25 +9,19 @@ const Header = () => {
 
   const styleActiveLink = ({ isActive }) => {
     return {
-        color: isActive ? '#f57145' : ''
+        color: isActive ? '#012F51' : ''
     }
 }
   return (
     <div className={classes.header}>
       {
           authCtx.token && (
-              <ul className='main-nav'>
+              <ul className={classes.navBar}>
                   <li classname={classes.listItem}>
-                      <NavLink style={styleActiveLink} to='/' classname={classes.listItem}>Home</NavLink>
+                      <NavLink style={styleActiveLink} to='/' >My Garage</NavLink>
                   </li>
                   <li classname={classes.listItem}>
-                      <NavLink style={styleActiveLink} to='profile' classname={classes.listItem}>Profile</NavLink>
-                  </li>
-                  <li classname={classes.listItem}>
-                      <NavLink style={styleActiveLink} to='form' classname={classes.listItem}>Add Post</NavLink>
-                  </li>
-                  <li classname={classes.listItem}>
-                      <button className='logout-btn' onClick={() => authCtx.logout()}>Logout</button>
+                      <button className={classes.logoutButton} onClick={() => authCtx.logout()}>Logout</button>
                   </li>
               </ul>
           ) 

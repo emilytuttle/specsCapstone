@@ -65,12 +65,12 @@ const Auth = () => {
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             className='form-input'/>
-                        <button className='form-btn'>
+                        <button className={classes.formbtn}>
                             {register ? 'Sign Up' : 'Login'}
                         </button>
                     </form>
                     <p>{!register ? 'Need a new account?' : 'Already have an account?'}</p>
-                    <button className='form-btn' onClick={() => setRegister(!register)}>
+                    <button className={classes.formbtn} onClick={() => setRegister(!register)}>
                         {register ? 'Sign in' : 'Sign Up'}
                     </button>
                 </div>

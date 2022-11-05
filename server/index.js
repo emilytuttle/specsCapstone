@@ -10,7 +10,7 @@ const {Vehicle} = require('./models/vehicle')
 const {Maintenance} = require('./models/maintenance')
 const {register, login} = require('./controllers/auth')
 const {createVehicle, getVehicles, getDetails, putVehicle} = require('./controllers/vehicles')
-const {createMaintenace, getMaintenance} = require('./controllers/maintenance')
+const {createMaintenace, getMaintenance, putMaintenance, deleteMaintenance} = require('./controllers/maintenance')
 
 
 const app = express()
@@ -41,6 +41,8 @@ app.put('/editvehicle', putVehicle)
 
 app.post('/createMaintenace', createMaintenace)
 app.get('/maintenance/:id', getMaintenance)
+app.put('/editmaintenance', putMaintenance)
+app.delete('/deletemaintenance/:id', deleteMaintenance)
 
 sequelize.sync()
     

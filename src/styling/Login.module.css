@@ -39,7 +39,7 @@ form {
     justify-content: center;
 }
 
-form-btn {
+.formbtn {
     background-color: #012F51;
     border: none;
     border-radius: 15px;

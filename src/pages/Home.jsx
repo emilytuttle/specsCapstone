@@ -30,7 +30,8 @@ const Home = () => {
 
  
   return (
-    <div className={classes.home}>Home
+    <div className={classes.home}>
+      
       <NewVehicle getVehicles={getVehicles} />
       {mappedVehicles}
     </div>

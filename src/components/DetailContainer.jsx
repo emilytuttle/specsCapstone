@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import classes from './DetailContainer.module.css'
 import NewMaintenance from '../forms/NewMaintenance'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const DetailContainer = ({vehicle}) => {
@@ -14,10 +13,7 @@ const DetailContainer = ({vehicle}) => {
   const vehicleId = `${vehicle.id}`
 
   const [editing, setEditing] = useState(false)
-    const navigate = useNavigate()
-    const handleClick = () => {
-        navigate(`/home`)
-    }
+    
 
     const toggleEditing = () => {
       setEditing(current => !current)
@@ -49,7 +45,7 @@ const DetailContainer = ({vehicle}) => {
 
     }
   return (
-    <div className={classes.details}>
+    <div>
 
         {editing && (
           <div className={classes.editCar}>
@@ -89,12 +85,16 @@ const DetailContainer = ({vehicle}) => {
           </div>
         )}
 
-        <button onClick={handleClick} className={classes.button}>Back</button>
+        
         <div className={classes.carCard}>
-          <h1>{vehicle.year} {vehicle.make} {vehicle.model}</h1>
-          <h2>{vehicle.name}</h2>
-          <h2>{vehicle.license}</h2>
-          <button onClick={toggleEditing}>edit</button>
+          <img src='./edit.png' />
+          <div>
+            <h1 className={classes.title}>{vehicle.year} {vehicle.make} {vehicle.model}</h1>
+            <h2>{vehicle.name}</h2>
+            <h2>{vehicle.license}</h2>
+            <button onClick={toggleEditing}>edit</button>
+          </div>
+          
         </div>
         <div>
           <div>Add Maintenance Item</div>

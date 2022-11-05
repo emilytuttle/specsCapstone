@@ -4,10 +4,16 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import DetailContainer from '../components/DetailContainer'
 import MaintenanceContainer from '../components/MaintenanceContainer'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const DetailScreen = () => {
+
+  const navigate = useNavigate()
+    const handleClick = () => {
+        navigate(`/home`)
+    }
     const {id} = useParams()
 
     const [vehicle, setVehicle] = useState([])
@@ -45,14 +51,18 @@ const DetailScreen = () => {
 
     const mappedMaintenance = maintenanceItems.map((maintenance, index) => {
       return (
-        <MaintenanceContainer maintenance={maintenance} key={index} />
+        <MaintenanceContainer maintenance={maintenance} index={index} />
       )
     })
   return (
     
     <div className={classes.detailScreen}>
-      {mappedVehicle}
-      {mappedMaintenance}
+      <button onClick={handleClick} className={classes.button}>Back</button>
+      <div>
+        {mappedVehicle}
+        {mappedMaintenance}
+      </div>
+      
     </div>
   )
 }

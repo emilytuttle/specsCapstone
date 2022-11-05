@@ -1,0 +1,93 @@
+.formContainer {
+    width: 535px;
+    height: 400px;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0 rgb(202, 202, 202);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.makeModel {
+    display: flex;
+}
+
+.shortInput {
+    width: 137px; 
+    height: 42px;
+    margin: 20px;
+    font-size: 16px;
+    padding-left: 25px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.description {
+    width: 200px;
+    height: 42px;
+    margin: 7px;
+    font-size: 16px;
+    padding-left: 25px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.yearLicense {
+    display: flex;
+}
+
+.vehicleSubmit {
+    width: 150px;
+    height: 45px;
+    color: white;
+    font-weight: bold;
+    background-color: #012F51;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none
+}
+
+.vehicleSubmit:hover{
+    cursor: pointer;
+}
+
+.x {
+    color: #969696;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+}
+
+.x:hover {
+    cursor: pointer;
+}
+.titleX {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 15px;
+    margin-bottom: -13px;
+
+}
+
+.vehicleAdd{
+    width: 150px;
+    height: 45px;
+    color: white;
+    font-weight: bold;
+    background-color: #012F51;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    margin: 30px
+}
+
+.vehicleAdd:hover{
+    cursor: pointer;
+}

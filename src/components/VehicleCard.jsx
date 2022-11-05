@@ -13,10 +13,13 @@ const VehicleCard = ({vehicle}) => {
     
   return (
     <div key={vehicle.id} className={classes.carCard}>
-        <h2>{vehicle.name}</h2>
-        <h4>{vehicle.make} {vehicle.model}</h4>
-        <h4>{vehicle.year}</h4>
-        <button onClick={handleClick}>View Details</button>
+        <h1 className={classes.text1}>{vehicle.make} {vehicle.model}</h1>
+        <h2 className={classes.text}>{vehicle.name}</h2>
+        <h2 className={classes.text}>{vehicle.year}</h2>
+        <h2 className={classes.text}>{vehicle.license}</h2>
+
+
+        <button onClick={handleClick} className={classes.viewDetails}>View Details</button>
     </div>
   )
 }

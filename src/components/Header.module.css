@@ -1,32 +1,48 @@
 .header {
-    background-color: blue;
-    height: 25%;
-    width: 100%;
+    background-color: #012F51;
+    height: 100vh;
+    width: 300px;
     color: white;
     display: flex;
-    align-items: center;
-    justify-content: right;
-    display: flex;
-    
-
+    flex-direction: column;
+    position: fixed;
 }
 
-.listItem { 
-    text-decoration: none;
-    color: white;
-    font-family: serif;
-}
 
 ul {
-    display: flex;
     color: white;
     text-decoration: none;
     list-style: none;
-
 }
 
 a {
     text-decoration: none;
     color: white;
-    padding: 15px
+    
 }
+
+.logoutButton {
+    border: none;
+    background-color: #012F51;
+    color: white;
+    font-size: 20px;
+    padding-top: 15px
+}
+
+.logoutButton:hover {
+    cursor: pointer;
+}
+
+.navBar {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+    left: -40px;
+    width: 100%;
+}
+
+
+

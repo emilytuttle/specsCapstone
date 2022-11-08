@@ -35,11 +35,10 @@ module.exports = {
     },
 
     putVehicle: async (req, res) => {
-        const {name, make, model, year, license, vehicleId} = req.body
+        const { make, model, year, license, vehicleId} = req.body
         try {
             await Vehicle.update(
                 {
-                    name: `${name}`, 
                     make: `${make}`, 
                     model: `${model}`, 
                     year: `${year}`, 

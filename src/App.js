@@ -18,7 +18,7 @@ function App() {
 return (
   <div>
     <div><Header/></div>
-    <div>
+    <div className='full'>
       <Routes>
         <Route path='/' element={!authCtx.token ? <Login/> : <Navigate to='/home'/>}/>
         <Route path='/home' element={authCtx.token ?<Home/> : <Navigate to='/login'/>}/>

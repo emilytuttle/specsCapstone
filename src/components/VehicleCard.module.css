@@ -1,6 +1,6 @@
 .carCard {
-    height: 270px;
-    width: 590px;
+    height: 220px;
+    width: 520px;
     padding: 20px;
     box-shadow: 0px 4px 4px 0 rgb(202, 202, 202);
     border-radius: 15px;
@@ -9,6 +9,7 @@
     align-items: center;
     background-color: white;
     margin: 20px;
+    position: relative;
     
 }
 
@@ -24,6 +25,8 @@
     margin: 30px;
     padding: 15px;
     margin-top: 10px;
+    position: absolute;
+    bottom: 15px;
 }
 
 .viewDetails:hover{

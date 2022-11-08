@@ -77,13 +77,13 @@
 }
 
 .vehicleAdd{
-    width: 150px;
-    height: 45px;
+    width: 250px;
+    height: 90px;
     color: white;
     font-weight: bold;
     background-color: #012F51;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 27px;
     border: none;
     margin: 30px
 }

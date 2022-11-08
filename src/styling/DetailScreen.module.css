@@ -1,11 +1,10 @@
 .detailScreen {
-    position: absolute;
-    width: 79%;
-    left: 300px;
+    position: relative;
+    width: 100%;
+    padding-left: 250px;
     display: flex;
     flex-direction: column;
     background-color: #E0E0E0;
-    padding: 40px;
     justify-content: center;
     align-items: center;
   }
@@ -30,4 +29,31 @@
 .button:hover{
     cursor: pointer;
 }
+
+.darkout {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 76%;
+  position: absolute;
+  z-index: 2;
+}
   
+.deleteVehicle {
+  width: 350px;
+  height: 80px;
+  color: white;
+  font-weight: bold;
+  background-color: #e90000;
+  border-radius: 10px;
+  font-size: 27px;
+  border: none;
+  padding: 15px;
+  margin-top: 150px;
+
+  
+}
+
+.deleteVehicle:hover {
+  cursor: pointer;
+}

@@ -1,7 +1,6 @@
 .home {
-  position: absolute;
-  width: 79%;
-  left: 300px;
+  
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #E0E0E0;

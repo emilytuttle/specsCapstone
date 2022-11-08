@@ -13,9 +13,7 @@ const VehicleCard = ({vehicle}) => {
     
   return (
     <div key={vehicle.id} className={classes.carCard}>
-        <h1 className={classes.text1}>{vehicle.make} {vehicle.model}</h1>
-        <h2 className={classes.text}>{vehicle.name}</h2>
-        <h2 className={classes.text}>{vehicle.year}</h2>
+        <h1 className={classes.text1}>{vehicle.year} {vehicle.make} {vehicle.model}</h1>
         <h2 className={classes.text}>{vehicle.license}</h2>
 
 

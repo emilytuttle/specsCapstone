@@ -10,7 +10,6 @@ module.exports = {
             allowNull: false,
             primaryKey: true
         },
-        name: DataTypes.STRING,
         make: DataTypes.STRING,
         model: DataTypes.STRING,
         year: DataTypes.STRING,

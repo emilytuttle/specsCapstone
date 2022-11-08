@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 import classes from './DetailContainer.module.css'
 import NewMaintenance from '../forms/NewMaintenance'
 import axios from 'axios'
+import {HiPencilSquare} from 'react-icons/hi2'
 
-const DetailContainer = ({vehicle}) => {
-  const [name, setName] = useState(`${vehicle.name}`)
+const DetailContainer = ({vehicle, toggleDark, getMaintenanceDetails} ) => {
   const [make, setMake] = useState(`${vehicle.make}`)
   const [model, setModel] = useState(`${vehicle.model}`)
   const [year, setYear] = useState(`${vehicle.year}`)
@@ -13,17 +13,24 @@ const DetailContainer = ({vehicle}) => {
   const vehicleId = `${vehicle.id}`
 
   const [editing, setEditing] = useState(false)
+  const [addNew, setAddNew] = useState(false)
     
 
     const toggleEditing = () => {
-      setEditing(current => !current)
+      setEditing(current => !current);
+      toggleDark()
+
+    }
+
+    const toggleMaint = () => {
+      setAddNew(current => !current)
+      toggleDark()
     }
 
     const editHandler = (e) => {
       e.preventDefault()
 
       const body = {
-        name,
         make,
         model,
         year,
@@ -35,8 +42,9 @@ const DetailContainer = ({vehicle}) => {
 
       axios.put(`${url}/editvehicle`, body)
       .then((res) => {
-        toggleEditing()
         console.log(res.data)
+        toggleEditing()
+        getMaintenanceDetails()
       })
       .catch(err => {
         console.log(err)
@@ -45,60 +53,72 @@ const DetailContainer = ({vehicle}) => {
 
     }
   return (
-    <div>
+    <div className={classes.detailContainer}>
 
         {editing && (
           <div className={classes.editCar}>
             <h1 onClick={toggleEditing} className={classes.x}>X</h1>
-            <div>
+            <h1>Edit Vehicle</h1>
+            <div className={classes.formContain}>
               <form onSubmit={editHandler}>
-                <input 
-                  placeholder='Vehicle'
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                />
-                <div>
+                
+                <div className={classes.labelsInputs}>
+                  <label>Make</label>
                   <input 
                     placeholder='Make'
                     value={make} 
                     onChange={e => setMake(e.target.value)}
                   />
+                </div>
+                
+                <div className={classes.labelsInputs}>
+                  <label>Model</label>
                   <input
                     placeholder='Model' 
                     value={model}
                     onChange={e => setModel(e.target.value)}
                   />
                 </div>
-                <input 
+                  
+                <div className={classes.labelsInputs}>
+                <label>Year</label>
+                  <input 
                     placeholder='Year' 
                     value={year}
                     onChange={e => setYear(e.target.value)}
-                />
-                <input 
+                  />
+                </div>
+                
+                <div className={classes.labelsInputs}>
+                <label>License Plate</label>
+                  <input 
                     placeholder='License Plate' 
                     value={license}
                     onChange={e => setLicense(e.target.value)}
-                />
-                <button type="submit">Submit</button>
+                  />
+                </div>
+               
+                <button type="submit" className={classes.submit}>Submit</button>
               </form>
             </div>
           </div>
         )}
 
-        
+        <div className={classes.container}>
         <div className={classes.carCard}>
-          <img src='./edit.png' />
-          <div>
+          <HiPencilSquare  className={classes.edit} onClick={toggleEditing}/>
+          <div className={classes.cardWords}>
             <h1 className={classes.title}>{vehicle.year} {vehicle.make} {vehicle.model}</h1>
-            <h2>{vehicle.name}</h2>
             <h2>{vehicle.license}</h2>
-            <button onClick={toggleEditing}>edit</button>
+          
           </div>
+        </div>
+       
           
         </div>
-        <div>
-          <div>Add Maintenance Item</div>
-          <NewMaintenance id={vehicle.id}/>
+        <div className={classes.maintenances}>
+          <div className={classes.maintenanceAdd} onClick={toggleMaint}>Add Maintenance Item</div>
+          {addNew && (<NewMaintenance id={vehicle.id} toggleMaint={toggleMaint}/>)}
         </div>
        
     </div>

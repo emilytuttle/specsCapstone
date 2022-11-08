@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import classes from './NewMaintenance.module.css'
 
 
-const NewMaintenance = ({id}) => {
+const NewMaintenance = ({id, toggleMaint}) => {
     const [service, setService] = useState('')
     const [date, setDate] = useState('')
     const [odometer, setOdometer] = useState('')
@@ -32,8 +33,11 @@ const NewMaintenance = ({id}) => {
     }
 
   return (
-    <div>
+    <div className={classes.newMaint}>
+        <div className={classes.x} onClick={toggleMaint}>X</div>
+        <h1>Add Maintenance Item</h1>
         <form onSubmit={submitHandler}>
+            
             <input 
                 placeholder='Service'
                 value={service}
@@ -49,12 +53,13 @@ const NewMaintenance = ({id}) => {
                 value={odometer}
                 onChange={e => setOdometer(e.target.value)}
             />
-             <input 
+             <textarea 
+                className={classes.textarea}
                 placeholder='Notes'
                 value={notes}
                 onChange={e => setNotes(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button type="submit" className={classes.add}>Submit</button>
         </form>
     </div>
   )

@@ -18,6 +18,17 @@ const DetailScreen = () => {
 
     const [vehicle, setVehicle] = useState([])
     const [maintenanceItems, setMaintenanceItems] = useState([])
+    const [darkScreen, setDarkScreen] = useState(false)
+    const [areYaSure, setAreYaSure] = useState(false)
+
+    const toggleDark = () => {
+      setDarkScreen(current => !current)
+    }
+
+    const toggleAreYaSure = () => {
+      setAreYaSure(current => !current)
+      toggleDark()
+    }
 
     const getVehicleDetails = useCallback(() => {
         axios.get(`http://localhost:3000/vehicle/${id}`)
@@ -45,18 +56,31 @@ const DetailScreen = () => {
 
     const mappedVehicle = vehicle.map((vehicle, index) => {
         return (
-            <DetailContainer vehicle = {vehicle} key={index}/>
+            <DetailContainer 
+              vehicle = {vehicle} 
+              key={index} 
+              toggleDark={toggleDark} 
+              getMaintenanceDetails={getMaintenanceDetails}
+            />
         )
     })
 
     const mappedMaintenance = maintenanceItems.map((maintenance, index) => {
       return (
-        <MaintenanceContainer maintenance={maintenance} index={index} />
+        <MaintenanceContainer 
+          maintenance={maintenance} 
+          index={index} 
+          toggleDark={toggleDark}
+        />
       )
     })
+
+    
   return (
     
     <div className={classes.detailScreen}>
+      <button className={classes.deleteVehicle} onClick={toggleAreYaSure}>Delete Vehicle</button>
+      {darkScreen && (<div className={classes.darkout} onClick={toggleDark}>Are you there</div>)}
       <button onClick={handleClick} className={classes.button}>Back</button>
       <div>
         {mappedVehicle}

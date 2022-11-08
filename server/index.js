@@ -9,7 +9,7 @@ const {User} = require('./models/user')
 const {Vehicle} = require('./models/vehicle')
 const {Maintenance} = require('./models/maintenance')
 const {register, login} = require('./controllers/auth')
-const {createVehicle, getVehicles, getDetails, putVehicle} = require('./controllers/vehicles')
+const {createVehicle, getVehicles, getDetails, putVehicle, deleteVehicle} = require('./controllers/vehicles')
 const {createMaintenace, getMaintenance, putMaintenance, deleteMaintenance} = require('./controllers/maintenance')
 
 
@@ -38,6 +38,7 @@ app.post('/createVehicle', createVehicle)
 app.get('/uservehicles/:userId', getVehicles)
 app.get('/vehicle/:id', getDetails)
 app.put('/editvehicle', putVehicle)
+app.delete('/deletevehicle/:id', deleteVehicle)
 
 app.post('/createMaintenace', createMaintenace)
 app.get('/maintenance/:id', getMaintenance)

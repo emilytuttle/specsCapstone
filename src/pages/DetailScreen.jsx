@@ -65,6 +65,15 @@ const DetailScreen = () => {
         )
     })
 
+    const deleteHandler = () => {
+      axios.delete(`http://localhost:3000/deletevehicle/${id}`)
+      .then(() => {
+        console.log('deleted vehicle')
+        navigate(`/home`)
+      })
+      .catch(err => console.log(err))
+    }
+
     const mappedMaintenance = maintenanceItems.map((maintenance, index) => {
       return (
         <MaintenanceContainer 
@@ -80,7 +89,16 @@ const DetailScreen = () => {
     
     <div className={classes.detailScreen}>
       <button className={classes.deleteVehicle} onClick={toggleAreYaSure}>Delete Vehicle</button>
-      {darkScreen && (<div className={classes.darkout} onClick={toggleDark}>Are you there</div>)}
+      {darkScreen && (<div className={classes.darkout} onClick={toggleDark}></div>)}
+      {areYaSure && (
+        <div className={classes.doubleCheck}>
+          <h2 className={classes.question}>Are you sure you want to delete?</h2>
+          <p className={classes.comment}>This action cannot be undone</p>
+          <div><button className={classes.deleteButton} onClick={deleteHandler}>Yes</button>
+          <button onClick={toggleAreYaSure} className={classes.noButton}>No</button></div>
+          
+        </div>
+      )}
       <button onClick={handleClick} className={classes.button}>Back</button>
       <div>
         {mappedVehicle}

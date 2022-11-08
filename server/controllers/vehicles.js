@@ -51,5 +51,20 @@ module.exports = {
         } catch(error) {
             console.log(error `on putVehicle`)
         }
+    },
+
+    deleteVehicle: async (req, res) => {
+        const {id} = req.params
+        try{
+            await Vehicle.destroy(
+                {
+                    where: {id: id}
+                }
+            )
+            res.sendStatus(200)
+        }
+        catch (error) {
+            console.log(error, 'Error deleting vehicle')
+        }
     }
 }

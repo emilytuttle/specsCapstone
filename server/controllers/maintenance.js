@@ -52,7 +52,7 @@ module.exports = {
             res.sendStatus(200)
         }
         catch (error) {
-            console.log(error, `Error deleting`)
+            console.log(error, `Error deleting maintenance item`)
         }
     }
 }

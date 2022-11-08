@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import classes from './VehicleCard.module.css'
 
 
+
 const VehicleCard = ({vehicle}) => {
 
     const navigate = useNavigate()

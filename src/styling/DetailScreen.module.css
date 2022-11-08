@@ -57,3 +57,61 @@
 .deleteVehicle:hover {
   cursor: pointer;
 }
+
+.doubleCheck {
+  width: 590px;
+  height: 212px;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  position: fixed;
+  top: 40%
+
+}
+
+.deleteButton {
+  width: 150px;
+  height: 45px;
+  color: white;
+  font-weight: bold;
+  background-color: #e90000;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
+  margin: 30px;
+  padding: 15px
+}
+
+.noButton {
+  width: 150px;
+  height: 45px;
+  color: white;
+  font-weight: bold;
+  background-color: #012F51;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
+  margin: 30px;
+  padding: 15px
+}
+
+.question {
+  padding-top: 50px;
+  line-height: 0
+}
+
+.comment {
+  line-height: 0;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.noButton:hover {
+  cursor: pointer;
+}

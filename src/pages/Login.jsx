@@ -45,14 +45,14 @@ const Auth = () => {
             <div className={classes.left}></div>
             <div className={classes.right}>
                 <div className={classes.formContainer}>
-                    <h1 className={classes.welcome}>Welcome!</h1>
+                    <h1 className={classes.welcome}>Welcome{!register &&(' Back')}!</h1>
                     <form className='form auth-form' onSubmit={submitHandler}>
-                        {register && (<input 
+                        {/* {register && (<input 
                             type='text' 
                             placeholder='Email' 
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            className='form-input'/>)}
+                            className='form-input'/>)} */}
                         <input 
                             type='text' 
                             placeholder='Username' 

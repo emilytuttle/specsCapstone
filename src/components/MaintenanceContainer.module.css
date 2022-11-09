@@ -184,3 +184,7 @@ label {
     justify-content: center;
     line-height: 0.5;
 }
+
+.notBold {
+    font-weight: normal;
+}

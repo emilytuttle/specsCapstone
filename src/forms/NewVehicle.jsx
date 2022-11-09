@@ -48,18 +48,19 @@ const NewVehicle = ({getVehicles}) => {
         axios.post(`${url}/createVehicle`, body)
         .then((res) => {
             console.log(res.data)
-            setName('')
-            setMake('')
-            setModel('')
-            setYear('')
-            setLicense('')
-            setOdometer('')
-
-            getVehicles()
+            
         })
         .catch(err => {
             console.log(err)
         })
+        setName('')
+        setMake('')
+        setModel('')
+        setYear('')
+        setLicense('')
+        setOdometer('')
+        getVehicles()
+        openClose()
     }
 
   return (

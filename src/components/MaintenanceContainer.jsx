@@ -3,7 +3,7 @@ import classes from './MaintenanceContainer.module.css'
 import axios from 'axios'
 import {HiPencilSquare} from 'react-icons/hi2'
 
-const MaintenanceContainer = ({maintenance, index, toggleDark}) => {
+const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDetails}) => {
   const maintenanceId = `${maintenance.id}`
   const url = 'http://localhost:3000'
 
@@ -31,6 +31,10 @@ const MaintenanceContainer = ({maintenance, index, toggleDark}) => {
     axios.delete(`${url}/deletemaintenance/${maintenanceId}`)
     .then(() => console.log('deleted'))
     .catch(err => console.log(err))
+
+    toggleEditing()
+    toggleAreYaSure()
+    getMaintenanceDetails()
   }
 
   const submitHandler = (e) => {
@@ -45,12 +49,14 @@ const MaintenanceContainer = ({maintenance, index, toggleDark}) => {
     }
     axios.put(`${url}/editmaintenance`, body)
     .then((res) => {
-      toggleEditing()
+      
       console.log(res.data)
     })
     .catch(err => {
       console.log(err)
     })
+    toggleEditing()
+    getMaintenanceDetails()
   }
 
   return (
@@ -122,9 +128,9 @@ const MaintenanceContainer = ({maintenance, index, toggleDark}) => {
         </div>
         <div className={classes.maintenanceText}>
           <h1>{maintenance.service}</h1>
-          <h2>{maintenance.date}</h2>
-          <h2>{maintenance.odometer}</h2>
-          <h2>{maintenance.notes}</h2>
+          <h2 className={classes.notBold}>{maintenance.date}</h2>
+          <h2 className={classes.notBold}>Odometer: {maintenance.odometer}</h2>
+          <h2 className={classes.notBold}>{maintenance.notes}</h2>
         </div>
         
       </div>

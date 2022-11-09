@@ -60,6 +60,7 @@ const DetailScreen = () => {
               vehicle = {vehicle} 
               key={index} 
               toggleDark={toggleDark} 
+              getVehicleDetails={getVehicleDetails}
               getMaintenanceDetails={getMaintenanceDetails}
             />
         )
@@ -80,6 +81,7 @@ const DetailScreen = () => {
           maintenance={maintenance} 
           index={index} 
           toggleDark={toggleDark}
+          getVehicleDetails={getMaintenanceDetails}
         />
       )
     })

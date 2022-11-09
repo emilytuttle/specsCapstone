@@ -16,7 +16,10 @@ module.exports = {
         
         let maintenanceItems = await Maintenance.findAll({
             include: Vehicle,
-            where: {vehicleId: id}
+            where: {vehicleId: id},
+            order: [
+                ['date', 'DESC']
+            ]
         })
         res.status(200).send(maintenanceItems)
         console.log('pulling maintenance items')

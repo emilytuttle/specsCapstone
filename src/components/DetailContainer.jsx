@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import classes from './DetailContainer.module.css'
 import NewMaintenance from '../forms/NewMaintenance'
 import axios from 'axios'
 import {HiPencilSquare} from 'react-icons/hi2'
 
-const DetailContainer = ({vehicle, toggleDark, getMaintenanceDetails} ) => {
+const DetailContainer = ({vehicle, toggleDark, getVehicleDetails, getMaintenanceDetails} ) => {
   const [make, setMake] = useState(`${vehicle.make}`)
   const [model, setModel] = useState(`${vehicle.model}`)
   const [year, setYear] = useState(`${vehicle.year}`)
@@ -29,6 +29,7 @@ const DetailContainer = ({vehicle, toggleDark, getMaintenanceDetails} ) => {
 
     const editHandler = (e) => {
       e.preventDefault()
+      
 
       const body = {
         make,
@@ -44,12 +45,13 @@ const DetailContainer = ({vehicle, toggleDark, getMaintenanceDetails} ) => {
       .then((res) => {
         console.log(res.data)
         toggleEditing()
-        getMaintenanceDetails()
+        getVehicleDetails()
       })
       .catch(err => {
         console.log(err)
       })
-
+      toggleEditing()
+      getVehicleDetails()
 
     }
   return (
@@ -118,7 +120,7 @@ const DetailContainer = ({vehicle, toggleDark, getMaintenanceDetails} ) => {
         </div>
         <div className={classes.maintenances}>
           <div className={classes.maintenanceAdd} onClick={toggleMaint}>Add Maintenance Item</div>
-          {addNew && (<NewMaintenance id={vehicle.id} toggleMaint={toggleMaint}/>)}
+          {addNew && (<NewMaintenance id={vehicle.id} toggleMaint={toggleMaint} getMaintenanceDetails={getMaintenanceDetails}/>)}
         </div>
        
     </div>

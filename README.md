@@ -1,11 +1,11 @@
-This will be an app to help runners pace themselves with music. The point is to be able to find songs with a bpm that will match the speed they need to run to meet their time goal.
+This will be an app to help keep track of maintenance done to vehicles. Knowing when things were serviced or replaced is harder to keep track of if there’s more than one vehicle and having it all in one place and not on receipts or window stickers can be helpful.
 
 Features:
 
 -Register for an account
 -Login/out
--Input average stride length & desired time to get bpm necessary
--search song list to find songs that match bpm
--Sort by genre
--Add songs to playlists to view later
+-Enter vehicles into page
+-Add completed maintenance items to specific vehicles
+-Edit vehicle or maintenance item info
+-Delete maintenance items and vehicles
 

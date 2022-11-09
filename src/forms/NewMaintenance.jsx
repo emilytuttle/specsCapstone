@@ -3,7 +3,7 @@ import axios from 'axios'
 import classes from './NewMaintenance.module.css'
 
 
-const NewMaintenance = ({id, toggleMaint}) => {
+const NewMaintenance = ({id, toggleMaint, getMaintenanceDetails}) => {
     const [service, setService] = useState('')
     const [date, setDate] = useState('')
     const [odometer, setOdometer] = useState('')
@@ -30,6 +30,8 @@ const NewMaintenance = ({id, toggleMaint}) => {
             setOdometer('')
             setNotes('')
         }).catch(err => console.log(err))
+        getMaintenanceDetails()
+        toggleMaint()
     }
 
   return (

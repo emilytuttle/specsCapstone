@@ -8,6 +8,14 @@ import classes from './NewVehicle.module.css'
 const NewVehicle = ({getVehicles}) => {
     const {userId} = useContext(AuthContext)
 
+    
+    const [darkScreen, setDarkScreen] = useState(false)
+  
+    const toggleDark = () => {
+      setDarkScreen(current => !current)
+    }
+  
+
     const [name, setName] = useState('')
     const [make, setMake] = useState('')
     const [model, setModel] = useState('')
@@ -19,6 +27,7 @@ const NewVehicle = ({getVehicles}) => {
 
     const openClose = () => {
         setOpen(current => !current)
+        toggleDark()
     }
 
     const submitHandler = e => {
@@ -55,55 +64,51 @@ const NewVehicle = ({getVehicles}) => {
 
   return (
     <div>
+        {darkScreen && (<div className={classes.darkout} onClick={toggleDark}></div>)}
         <button className={classes.vehicleAdd} onClick={openClose}> Add Vehicle</button>
-        { open && (<div className={classes.formContainer}>
-        <div className={classes.titleX}>
-        <h1>Add Vehicle</h1>
-        <div className={classes.x} onClick={openClose}>X</div>
-        </div>
-        
-        <form onSubmit={submitHandler}>
-            <div className={classes.makeModel}>
-                <input 
-                    placeholder='Make'
-                    value={make} 
-                    onChange={e => setMake(e.target.value)}
-                    className={classes.shortInput}
-                    required
-                />
-                <input 
-                    placeholder='Model' 
-                    value={model}
-                    onChange={e => setModel(e.target.value)}
-                    className={classes.shortInput}
-                />
+        { open && (
+        <div className={classes.formContainer}>
+            <div className={classes.titleX}>
+            <h1>Add Vehicle</h1>
+            <div className={classes.x} onClick={openClose}>X</div>
             </div>
-            <input 
-                placeholder='Description (optional)'
-                value={name}
-                onChange={e => setName(e.target.value)}
-                className={classes.description}
-            />
-
-            <div className={classes.yearLicense}>
-                <input 
-                    placeholder='Year' 
-                    value={year}
-                    onChange={e => setYear(e.target.value)}
-                    className={classes.shortInput}
-                />
-                <input 
-                    placeholder='License Plate' 
-                    value={license}
-                    onChange={e => setLicense(e.target.value)}
-                    className={classes.shortInput}
-                />
-            </div>
-           
-           
-            <button type="submit" className={classes.vehicleSubmit}>Add to Garage</button>
-        </form>
-    </div>)}
+            
+            <form onSubmit={submitHandler} className={classes.form}>
+                <div className={classes.makeModel}>
+                    <input 
+                        placeholder='Make'
+                        value={make} 
+                        onChange={e => setMake(e.target.value)}
+                        className={classes.shortInput}
+                        required
+                    />
+                    <input 
+                        placeholder='Model' 
+                        value={model}
+                        onChange={e => setModel(e.target.value)}
+                        className={classes.shortInput}
+                    />
+                </div>
+            
+                
+                    <input 
+                        placeholder='Year' 
+                        value={year}
+                        onChange={e => setYear(e.target.value)}
+                        className={classes.shortInput}
+                    />
+                    <input 
+                        placeholder='License Plate' 
+                        value={license}
+                        onChange={e => setLicense(e.target.value)}
+                        className={classes.shortInput}
+                    />
+                
+            
+            
+                <button type="submit" className={classes.vehicleSubmit}>Add to Garage</button>
+            </form>
+        </div>)}
     </div>
     
   )

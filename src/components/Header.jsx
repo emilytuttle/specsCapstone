@@ -14,6 +14,7 @@ const Header = () => {
 }
   return (
     <div className={classes.header}>
+        
       {
           authCtx.token && (
               <ul className={classes.navBar}>

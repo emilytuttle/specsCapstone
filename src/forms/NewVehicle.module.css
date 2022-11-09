@@ -7,11 +7,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 2;
+    position: absolute
     
 }
 
 .makeModel {
     display: flex;
+    z-index: 2;
 }
 
 .shortInput {
@@ -61,6 +64,9 @@
     top: 12px;
     right: 20px;
 }
+.form {
+    z-index: 2;
+}
 
 .x:hover {
     cursor: pointer;
@@ -73,6 +79,7 @@
     position: relative;
     padding-top: 15px;
     margin-bottom: -13px;
+    z-index: 2;
 
 }
 
@@ -91,3 +98,14 @@
 .vehicleAdd:hover{
     cursor: pointer;
 }
+
+.darkout {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 76%;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1;
+  }

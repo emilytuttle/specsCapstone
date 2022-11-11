@@ -5,6 +5,8 @@ import axios from 'axios'
 import DetailContainer from '../components/DetailContainer'
 import MaintenanceContainer from '../components/MaintenanceContainer'
 import { useNavigate } from 'react-router-dom'
+import MaintenanceTable from '../components/MaintenanceTable'
+import { IoMdSearch } from "react-icons/io";
 
 
 
@@ -20,6 +22,7 @@ const DetailScreen = () => {
     const [maintenanceItems, setMaintenanceItems] = useState([])
     const [darkScreen, setDarkScreen] = useState(false)
     const [areYaSure, setAreYaSure] = useState(false)
+    const [search, setSearch] = useState('')
 
     const toggleDark = () => {
       setDarkScreen(current => !current)
@@ -62,6 +65,7 @@ const DetailScreen = () => {
               toggleDark={toggleDark} 
               getVehicleDetails={getVehicleDetails}
               getMaintenanceDetails={getMaintenanceDetails}
+
             />
         )
     })
@@ -82,35 +86,63 @@ const DetailScreen = () => {
           index={index} 
           toggleDark={toggleDark}
           getVehicleDetails={getMaintenanceDetails}
+          maintenanceItems={maintenanceItems}
         />
       )
     })
+
+    const secondMappedMaintenace = maintenanceItems.filter((maintenance, index) => {
+      let name = maintenance.service.toLowerCase()
+      let date = maintenance.date.toLowerCase()
+      let odometerSearch = maintenance.odometer.toLowerCase()
+      let notesSearch = maintenance.notes.toLowerCase()
+      let searchParams = search.toLowerCase()
+      return (
+        name.includes(searchParams)
+      )
+  }).map((maintenance, index) => {
+      return (
+        <MaintenanceTable 
+          maintenance={maintenance} 
+          index={index} 
+          toggleDark={toggleDark}
+          getMaintenanceDetails={getMaintenanceDetails}
+        />
+        
+      )
+    })
+
+   
 
     
   return (
     
     <div className={classes.detailScreen}>
-      <button className={classes.deleteVehicle} onClick={toggleAreYaSure}>Delete Vehicle</button>
       {darkScreen && (<div className={classes.darkout} onClick={toggleDark}></div>)}
-      {areYaSure && (
-        <div className={classes.doubleCheck}>
-          <h2 className={classes.question}>Are you sure you want to delete?</h2>
-          <p className={classes.comment}>This action cannot be undone</p>
-          <div><button className={classes.deleteButton} onClick={deleteHandler}>Yes</button>
-          <button onClick={toggleAreYaSure} className={classes.noButton}>No</button></div>
-          
-        </div>
-      )}
+      
       <button onClick={handleClick} className={classes.button}>Back</button>
-      <div>
+      <div className={classes.center}>
         {mappedVehicle}
-        <table>
-          <tr>
-          {mappedMaintenance}
+
+        <input 
+          className={classes.searchBar} 
+          placeholder='Search by Service'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <table className={classes.table}>
+          <tr className={classes.tableHeader}>
+            <th className={classes.serviceColumn}>Service</th>
+            <th className={classes.dateColumn}>Date</th>
+            <th className={classes.odometerColumn}>Odometer</th>
+            <th className={classes.notesColumn}>Notes</th>
+            <th className={classes.end}></th>
+           
+
           </tr>
-        
+          {secondMappedMaintenace}
         </table>
-        
       </div>
       
     </div>

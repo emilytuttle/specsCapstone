@@ -7,6 +7,7 @@
     flex-direction: column;
     position: fixed;
     z-index: 3;
+    
 }
 
 
@@ -45,5 +46,16 @@ a {
     width: 100%;
 }
 
+.car {
+    margin-top: 230px;
+    width: 160px;
+    padding-left: 65px
+}
+
+.garage {
+    padding-left: 39px;
+    font-family: 'Righteous';
+    font-size: 37px;
+}
 
 

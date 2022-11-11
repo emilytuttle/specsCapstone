@@ -1,7 +1,7 @@
 .detailScreen {
     position: relative;
     width: 100%;
-    padding-left: 250px;
+    padding-left: 165px;
     display: flex;
     flex-direction: column;
     background-color: #E0E0E0;
@@ -114,4 +114,81 @@
 
 .noButton:hover {
   cursor: pointer;
+}
+
+.table {
+  border-collapse:collapse;
+  background-color: white;
+  width: 950px;
+  border: none;
+  text-align: center;
+  margin-bottom: 100px;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+  padding: 10px;
+  margin-top: 20px;
+
+
+  
+}
+
+
+.serviceColumn {
+  width: 25%;
+  border-left: 1px solid black
+}
+.tableHeader {
+  background: #a6a6a7d1;
+  line-height: 20px;
+}
+
+
+.notesColumn {
+  width: 30%;
+}
+
+.editColumn {
+  width: 5%
+}
+
+.dateColumn {
+  width: 20%
+}
+.odometerColumn {
+  width: 15%
+}
+
+.searchBar {
+  width: 80%;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 20px;
+
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+td {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+th {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  
+  
+}
+
+.end {
+  border-right: 1px solid black
 }

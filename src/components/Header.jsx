@@ -13,7 +13,14 @@ const Header = () => {
     }
 }
   return (
-    <div className={classes.header}>
+    <div>
+        { authCtx.token && (<div className={classes.header}>
+        { authCtx.token && (
+            <>
+        <img src={require('./solo.png')} className={classes.car} />
+        <h1 className={classes.garage}>Garage Log</h1>
+        </>
+        )}
         
       {
           authCtx.token && (
@@ -27,7 +34,9 @@ const Header = () => {
               </ul>
           ) 
       }
-  </div>
+  </div>)}
+    </div>
+    
   )
 }
 

@@ -60,3 +60,19 @@ form {
     width: 45%;
     height: 100vh;
 }
+
+.car {
+    width: 300px;
+    
+}
+
+.title {
+    color: white
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Righteous"
+}

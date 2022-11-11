@@ -4,11 +4,10 @@
     align-items: center;
 }
 
-.maintenanceCard {
+.maintenanceTableContainer {
     display: flex;
     flex-direction: column;
-    width: 615px;
-    height: 250px;
+    width: 900px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0 rgb(202, 202, 202);
@@ -88,7 +87,6 @@ label {
     justify-content: center;
     position: absolute;
     z-index: 2;
-
 }
 
 .x {

@@ -18,7 +18,7 @@ module.exports = {
             include: Vehicle,
             where: {vehicleId: id},
             order: [
-                ['date', 'DESC']
+                ['updatedAt', 'DESC']
             ]
         })
         res.status(200).send(maintenanceItems)

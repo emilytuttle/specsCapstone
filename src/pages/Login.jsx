@@ -42,7 +42,13 @@ const Auth = () => {
 
     return (
         <div className={classes.login}>
-            <div className={classes.left}></div>
+            <div className={classes.left}>
+                <div>
+                    <img src={require('../components/solo.png')} className={classes.car} />
+                    <h1 className={classes.title}>Garage Log</h1>
+                </div>
+                
+            </div>
             <div className={classes.right}>
                 <div className={classes.formContainer}>
                     <h1 className={classes.welcome}>Welcome{!register &&(' Back')}!</h1>

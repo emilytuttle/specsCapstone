@@ -3,6 +3,7 @@ import classes from './DetailContainer.module.css'
 import NewMaintenance from '../forms/NewMaintenance'
 import axios from 'axios'
 import {HiPencilSquare} from 'react-icons/hi2'
+import { useNavigate } from 'react-router-dom'
 
 const DetailContainer = ({vehicle, toggleDark, getVehicleDetails, getMaintenanceDetails} ) => {
   const [make, setMake] = useState(`${vehicle.make}`)
@@ -10,10 +11,21 @@ const DetailContainer = ({vehicle, toggleDark, getVehicleDetails, getMaintenance
   const [year, setYear] = useState(`${vehicle.year}`)
   const [license, setLicense] = useState(`${vehicle.license}`)
 
+  const navigate = useNavigate()
+
   const vehicleId = `${vehicle.id}`
 
   const [editing, setEditing] = useState(false)
   const [addNew, setAddNew] = useState(false)
+
+  const [areYaSure, setAreYaSure] = useState(false)
+
+  const toggleAreYaSure = () => {
+    
+    setEditing(current => !current);
+    setAreYaSure(current => !current)
+   
+  }
     
 
     const toggleEditing = () => {
@@ -21,6 +33,32 @@ const DetailContainer = ({vehicle, toggleDark, getVehicleDetails, getMaintenance
       toggleDark()
 
     }
+//USE THESE
+    const openEditingAndDark = () => {
+      setEditing(current => !current)
+      toggleDark()
+      setAreYaSure(false)
+    }
+
+    const openEditingOnly = () => {
+      setEditing(current => !current)
+    }
+
+    const openAreYaSure = () => {
+      setAreYaSure(current => !current)
+    }
+
+    const openAndClose = () => {
+      openAreYaSure()
+      openEditingOnly()
+    }
+
+    const tryAgain = () => {
+      setEditing(false)
+    }
+
+
+
 
     const toggleMaint = () => {
       setAddNew(current => !current)
@@ -52,8 +90,17 @@ const DetailContainer = ({vehicle, toggleDark, getVehicleDetails, getMaintenance
       })
       toggleEditing()
       getVehicleDetails()
-
     }
+
+    const deleteHandler = () => {
+      axios.delete(`http://localhost:3000/deletevehicle/${vehicleId}`)
+      .then(() => {
+        console.log('deleted vehicle')
+        navigate(`/home`)
+      })
+      .catch(err => console.log(err))
+    }
+
   return (
     <div className={classes.detailContainer}>
 
@@ -102,13 +149,25 @@ const DetailContainer = ({vehicle, toggleDark, getVehicleDetails, getMaintenance
                
                 <button type="submit" className={classes.submit}>Submit</button>
               </form>
+
+              <button className={classes.deleteVehicle} onClick={openAreYaSure}>Delete Vehicle</button>
+      
+      {areYaSure && (
+        <div className={classes.doubleCheck}>
+          <h2 className={classes.question}>Are you sure you want to delete?</h2>
+          <p className={classes.comment}>This action cannot be undone</p>
+          <div><button className={classes.deleteButton} onClick={deleteHandler}>Yes</button>
+          <button onClick={openAreYaSure} className={classes.noButton}>No</button></div>
+          
+        </div>
+      )}
             </div>
           </div>
         )}
 
         <div className={classes.container}>
         <div className={classes.carCard}>
-          <HiPencilSquare  className={classes.edit} onClick={toggleEditing}/>
+          <HiPencilSquare  className={classes.edit} onClick={openEditingAndDark}/>
           <div className={classes.cardWords}>
             <h1 className={classes.title}>{vehicle.year} {vehicle.make} {vehicle.model}</h1>
             <h2>{vehicle.license}</h2>

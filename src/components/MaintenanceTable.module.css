@@ -1,0 +1,92 @@
+.edit {
+   
+    font-size: 25px;
+    padding: 10px;
+}
+
+.edit:hover {
+    cursor: pointer;
+}
+
+.maintenanceEditContain {
+    z-index: 2;
+}
+
+.rowBlue {
+    background-color: #7fc6fc64;
+}
+
+.notesColumn {
+    width: 100px;
+    line-height: 20px;
+    
+  }
+
+
+.maintenanceEditContain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+    padding-left: 350px;
+    
+}
+
+.saveChanges {
+    width: 150px;
+    height: 45px;
+    color: white;
+    font-weight: bold;
+    background-color: #012F51;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    margin: 30px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.saveChanges:hover {
+    cursor: pointer;
+}
+
+.textarea {
+    font-family: sans-serif;
+    border-radius: 10px;
+    border: 1px solid #D8D8D8;
+    padding: 5px;
+    width: 270px;
+    padding-top: 12px;
+}
+
+label {
+    padding-right: 15px;
+}
+
+.x {
+    font-size: 35px;
+    right: 23px;
+    top: -2px;
+    color: gray;
+    margin-bottom: -10px;
+    padding-left: 300px
+}
+
+.x:hover {
+    cursor: pointer;
+}
+
+.deleteButton {
+    width: 150px;
+    height: 45px;
+    color: white;
+    font-weight: bold;
+    background-color: #e90000;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    margin: 20px;
+    padding: 15px;
+    
+}

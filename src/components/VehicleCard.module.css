@@ -33,7 +33,9 @@
     cursor: pointer;
 }
 
-
+.text1 {
+    font-size: 35px;
+}
 
 .text {
     line-height: 0;

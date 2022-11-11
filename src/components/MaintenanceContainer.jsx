@@ -4,7 +4,7 @@ import axios from 'axios'
 import {HiPencilSquare} from 'react-icons/hi2'
 
 
-const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDetails}) => {
+const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDetails, maintenanceItems}) => {
   const maintenanceId = `${maintenance.id}`
   const url = 'http://localhost:3000'
 
@@ -63,6 +63,14 @@ const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDet
     toggleEditing()
     getMaintenanceDetails()
   }
+
+  const tableMappedMaintenance = maintenanceItems.map((maintenance, index) => {
+    return (
+      <tr>
+        <td>{maintenance.service}</td>
+      </tr>
+    )
+  })
 
   return (
 
@@ -128,7 +136,8 @@ const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDet
         <button onClick={toggleAreYaSure} className={classes.deleteButton}>Delete Item</button>
       </div>)}
 
-      <div className={classes.maintenanceCard}>
+      <div className={classes.maintenanceTableContainer}>
+        {tableMappedMaintenance}
         <div className={classes.maintenceCardBuffer}>
         <HiPencilSquare  className={classes.edit} onClick={toggleEditing}/>
         </div>

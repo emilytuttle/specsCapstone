@@ -3,14 +3,19 @@ import classes from './MaintenanceContainer.module.css'
 import axios from 'axios'
 import {HiPencilSquare} from 'react-icons/hi2'
 
+
 const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDetails}) => {
   const maintenanceId = `${maintenance.id}`
   const url = 'http://localhost:3000'
 
+  const fixedDate = `${maintenance.date}`
+  const doubleFixed = fixedDate.slice(0,15)
+  
+
   const [editing, setEditing] = useState(false)
   const [areYaSure, setAreYaSure] = useState(false)
   const [service, setService] = useState(`${maintenance.service}`)
-  const [date, setDate] = useState(`${maintenance.date}`)
+  const [date, setDate] = useState(doubleFixed)
   const [odometer, setOdometer] = useState(`${maintenance.odometer}`)
   const [notes, setNotes] = useState(`${maintenance.notes}`)
 
@@ -95,6 +100,7 @@ const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDet
               value={date}
               onChange={e => setDate(e.target.value)}
             />
+           
           </div>
 
           <div>
@@ -128,7 +134,7 @@ const MaintenanceContainer = ({maintenance, index, toggleDark, getMaintenanceDet
         </div>
         <div className={classes.maintenanceText}>
           <h1>{maintenance.service}</h1>
-          <h2 className={classes.notBold}>{maintenance.date}</h2>
+          <h2 className={classes.notBold}>{doubleFixed}</h2>
           <h2 className={classes.notBold}>Odometer: {maintenance.odometer}</h2>
           <h2 className={classes.notBold}>{maintenance.notes}</h2>
         </div>

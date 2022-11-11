@@ -1,20 +1,23 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import classes from './NewMaintenance.module.css'
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const NewMaintenance = ({id, toggleMaint, getMaintenanceDetails}) => {
     const [service, setService] = useState('')
-    const [date, setDate] = useState('')
     const [odometer, setOdometer] = useState('')
     const [notes, setNotes] = useState('')
 
+    const [startDate, setStartDate] = useState(new Date());
+
     const submitHandler = e => {
         e.preventDefault()
-
+        let newStartDate = startDate.toString()
         const body = {
             service,
-            date,
+            newStartDate,
             odometer,
             notes, 
             id
@@ -25,13 +28,10 @@ const NewMaintenance = ({id, toggleMaint, getMaintenanceDetails}) => {
         axios.post(`${url}/createMaintenace`, body)
         .then((res) => {
             console.log(res.data)
-            setService('')
-            setDate('')
-            setOdometer('')
-            setNotes('')
         }).catch(err => console.log(err))
         getMaintenanceDetails()
         toggleMaint()
+        console.log(startDate)
     }
 
   return (
@@ -39,17 +39,18 @@ const NewMaintenance = ({id, toggleMaint, getMaintenanceDetails}) => {
         <div className={classes.x} onClick={toggleMaint}>X</div>
         <h1>Add Maintenance Item</h1>
         <form onSubmit={submitHandler}>
-            
+        
             <input 
                 placeholder='Service'
                 value={service}
                 onChange={e => setService(e.target.value)}
             />
-             <input 
+             {/* <input 
                 placeholder='Date'
                 value={date}
                 onChange={e => setDate(e.target.value)}
-            />
+            /> */}
+            <DatePicker selected={startDate} onChange={(e) => setStartDate(e)} />
              <input 
                 placeholder='Odometer'
                 value={odometer}

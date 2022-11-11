@@ -104,7 +104,13 @@ const DetailScreen = () => {
       <button onClick={handleClick} className={classes.button}>Back</button>
       <div>
         {mappedVehicle}
-        {mappedMaintenance}
+        <table>
+          <tr>
+          {mappedMaintenance}
+          </tr>
+        
+        </table>
+        
       </div>
       
     </div>

@@ -10,6 +10,7 @@ import DetailScreen from './pages/DetailScreen';
 
 
 
+
 import AuthContext from './store/authContext';
 
 function App() {

@@ -33,6 +33,7 @@ a {
 
 .logoutButton:hover {
     cursor: pointer;
+
 }
 
 .navBar {
@@ -48,14 +49,14 @@ a {
 
 .car {
     margin-top: 230px;
-    width: 160px;
-    padding-left: 65px
+    width: 190px;
+    padding-left: 55px;
 }
 
 .garage {
-    padding-left: 39px;
+    padding-left: 60px;
     font-family: 'Righteous';
-    font-size: 37px;
+    font-size: 30px;
 }
 
 

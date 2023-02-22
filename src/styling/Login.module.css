@@ -62,12 +62,17 @@ form {
 }
 
 .car {
-    width: 300px;
+    width: 200px;
+    padding-left: 40px;
+    /* display: none; */
     
 }
 
 .title {
-    color: white
+    color: white;
+    padding-left: 0px;
+    font-size: 50px;
+    /* display:none; */
 }
 
 .left {
